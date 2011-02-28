@@ -1,0 +1,6 @@
+<h1><%= @book.get_title %></h1>
+<h2><%= @book.get_author %></h2>
+<h3><%= @chapter.title %></h3>
+<p>
+  <%=@chapter.content.gsub("\n","<br>") %>
+</p>

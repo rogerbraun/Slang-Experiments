@@ -1,4 +1,3 @@
-include Java
 require "../dbc/dbc_jar/dbc.jar"
 require "../dbc/dbc_jar/commons-daemon.jar"
 require "../dbc/dbc_jar/mysql-connector-java-5.0.7-bin.jar"
@@ -12,7 +11,16 @@ class SimpleDBC
   end
 
   def chapter(id)
-    @dbc.load_chapter(id)
+    @dbc.load_chapter(id.to_i)
+  end
+
+  def books
+    @dbc.load_books.to_a
+  end
+
+  def book(id)
+    #load_book scheint nicht die verknüpfungen zu laden
+    @dbc.load_books.select{|book| book.db_id == id.to_i}.first
   end
 
   def chapter_loader
@@ -36,12 +44,3 @@ class SimpleDBC
 
   
 end
-    
-
-
-host = "127.0.0.1"
-
-
-@db = SimpleDBC.new(host)
-
-

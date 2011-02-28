@@ -1,0 +1,7 @@
+<h1><%= @book.get_title %></h1>
+<h2><%= @book.get_author %></h2>
+<ul>
+  <% @book.chapters.each do |chapter| %>
+    <li><a href="/books/<%= @book.db_id %>/chapters/<%= chapter.db_id %>"><%= chapter.title %></a></li>
+  <% end %>
+</ul>
